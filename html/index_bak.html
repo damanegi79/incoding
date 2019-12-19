@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script>
+        function get_version_of_IE() {
+            var word;
+            var agent = navigator.userAgent.toLowerCase();
+            if (navigator.appName == "Microsoft Internet Explorer") word = "msie ";
+            else if (agent.search("trident") > -1) word = "trident/.*rv:";
+            else if (agent.search("edge/") > -1) word = "edge/";
+            else return -1;
+            var reg = new RegExp(word + "([0-9]{1,})(\\.{0,}[0-9]{0,1})");
+            if (reg.exec(agent) != null) return parseFloat(RegExp.$1 + RegExp.$2);
+            return -1;
+        }
+        window.onload = function() {
+            var verNumber = get_version_of_IE();
+            if (verNumber != -1) {
+                $('#ie').show();
+            } 
+        };
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154624650-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-154624650-1');
+    </script>
+
+    <title>INCODING - 웹퍼블리싱 / 인터렉션 / 프론트엔드 개발</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1,user-scalable=yes" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="Author" content="" />
+    <meta name="description" content="웹퍼블리싱 및 인터렉션 개발 그리고 프론트엔드 개발을 합니다. 간단한 웹사이트를 제작 합니다.">
+    <meta name="keywords" content="웹퍼블리싱,웹퍼블리셔,html 코딩,프론트엔드 개발,웹사이트 개발,반응형 사이트 개발,모바일 사이트 개발,홈페이지 제작,스크립트 개발,웹퍼블리싱,모바일웹 퍼블리싱,반응형웹 퍼블리싱, 웹디자인">
+    <!-- sns link -->
+    <meta property=”og:type” content=”website”>
+    <meta property="og:title" content="인코딩">
+    <meta property="og:url" content="http://www.incoding.co.kr">
+    <meta property="og:image" content="../img/img_og_image.png">
+    <meta property="og:description" content="웹퍼블리싱 / 인터렉션 / 프론트엔드 개발 / 컨텐츠 UI 개발">
+    
+    <link rel="canonical" href="http://incoding.co.kr">
+    <link rel="shortcut icon" href="../img/favicon.png" />
+    <!-- css -->
+    <link type="text/css" rel="stylesheet" href="../css/base.css" />
+    <link type="text/css" rel='stylesheet' href='../css/swiper.min.css'>
+    <link type="text/css" rel="stylesheet" href="../css/slider.css">
+    <link type="text/css" rel="stylesheet" href="../css/style.css">
+    <!-- js -->
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/imagesloaded.pkgd.min.js"></script>
+    <script src="../js/three.min.js"></script>
+    <script src="../js/TweenMax.min.js"></script>
+    <script src="../js/plugins.js"></script>
+    <script src="../js/smooth-scrollbar.js"></script>
+    <script src="../js/overscroll.js"></script>
+    <script src="../js/ScrollMagic.js"></script>
+    <script src="../js/animation.gsap.js"></script>
+    <script src="../js/TextPlugin.min.js"></script>
+    <script src="../js/hover.js"></script>
+    <script src='../js/swiper.min.js'></script>
+    <script src="../js/jquery.teletype.js"></script>
+    <script src="../js/clipboard.min.js"></script>
+    <script src="../js/jquery.parallaxify.js"></script>
+    <script src="../js/ui.js"></script>
+
+</head>
+
+<body>
+    <!-- wrap -->
+    <div id="fixedContents">
+        <div class="logoBlock">
+            <div class="header">
+                <h1><span class="left">IN</span><span class="right">CODING</span></h1>
+                <span class="summery">Interective Studio</span>
+            </div>
+            <div class="logoLines">
+                <div class="lineBlock">
+                    <div class="line line-center"></div>
+                    <div class="line line-left"></div>
+                    <div class="line line-right"></div>
+                </div>
+            </div>
+            <a href="#" class="home"></a>
+        </div>
+<!--
+        <div class="menuBlock">
+            <button class="menuButton showWhenLoad">
+                <div class="menu-lines">
+                    <div class="menu-line"> </div>
+                    <div class="menu-line"> </div>
+                    <div class="menu-line"> </div>
+                </div>
+            </button>
+        </div>
+-->
+        <dl class="colorSelector">
+            <dt><button type="button">컬러선택</button></dt>
+            <dd>
+                <ul>
+                    <li><button type="button">color1</button></li>
+                    <li><button type="button">color2</button></li>
+                    <li><button type="button">color3</button></li>
+                    <li><button type="button">color4</button></li>
+                    <li><button type="button">color5</button></li>
+                    <li><button type="button">color6</button></li>
+                </ul>
+            </dd>
+        </dl>
+        <aside class="indicator show">
+            <nav>
+                <div class="navItem">
+                    <button class="point current" data-goto="0"></button>
+                    <div class="itemDesription">Home</div>
+                </div>
+
+                <div class="navItem">
+                    <button class="point" data-goto="1"></button>
+                    <div class="itemDesription">Service</div>
+                </div>
+
+                <div class="navItem">
+                    <button class="point" data-goto="2"></button>
+                    <div class="itemDesription">Service Detail</div>
+                </div>
+
+                <div class="navItem">
+                    <button class="point" data-goto="3"></button>
+                    <div class="itemDesription">Solutions</div>
+                </div>
+
+                <div class="navItem">
+                    <button class="point" data-goto="4"></button>
+                    <div class="itemDesription">Showcase</div>
+                </div>
+
+                <div class="navItem">
+                    <button class="point" data-goto="5"></button>
+                    <div class="itemDesription">Contacts</div>
+                </div>
+            </nav>
+        </aside>
+    </div>
+    <div id="wrap" >
+        <div class="intro flex-center">
+            <h1>
+                <svg id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 345.171 73.265">
+                    <defs>
+                        <clipPath id="clip-path" transform="translate(-340.934 -77.368)">
+                            <path id="designnest" d="M349.646,129.02a6.814,6.814,0,0,1-1.98-4.8V104.241a6.814,6.814,0,0,1,1.98-4.8l.18-.18a6.859,6.859,0,0,1,4.62-1.8h8.34a14.239,14.239,0,0,1,14.1,14.1v5.34a14.2,14.2,0,0,1-14.1,14.1h-8.34a6.861,6.861,0,0,1-4.62-1.8Zm1.68-.66a5.251,5.251,0,0,0,3.12,1.02h8.34A12.6,12.6,0,0,0,375.325,116.9v-5.34a12.6,12.6,0,0,0-12.539-12.479h-8.34a5.252,5.252,0,0,0-3.12,1.02v-.06l-.54.54a5.175,5.175,0,0,0-1.5,3.66V124.22a5.174,5.174,0,0,0,1.5,3.66l.54.54Zm56.639-30.9a.808.808,0,0,1,.84.78.82.82,0,0,1-.84.84H396.146a12.548,12.548,0,0,0-12.479,12.479v1.86h22.2a.794.794,0,0,1,.78.78.809.809,0,0,1-.78.84h-22.2v1.86a12.547,12.547,0,0,0,12.479,12.479h11.819a.82.82,0,0,1,.84.84.808.808,0,0,1-.84.78H396.146a14.239,14.239,0,0,1-14.1-14.1v-5.34a14.239,14.239,0,0,1,14.1-14.1Zm36.719,7.979a.794.794,0,0,1-.78.78.809.809,0,0,1-.84-.78,6.394,6.394,0,0,0-1.86-4.56l-.6-.48a6.072,6.072,0,0,0-3.9-1.38H422.966a6.356,6.356,0,0,0-3.96,1.38l-.54.48a6.392,6.392,0,0,0-1.86,4.56c0,13.02,28.379,3.24,28.379,17.52A8.067,8.067,0,0,1,437,131H422.545a8,8,0,0,1-5.64-2.34l-.18-.24a7.866,7.866,0,0,1-2.16-5.16v-.3a.794.794,0,0,1,.78-.78.809.809,0,0,1,.84.78,6.4,6.4,0,0,0,1.68,4.32l.18.24a6.356,6.356,0,0,0,4.5,1.86H437a6.415,6.415,0,0,0,6.36-6.419c0-7.62-9.18-6.84-13.859-7.98-8.16-1.02-14.52-2.88-14.52-9.54a8.136,8.136,0,0,1,2.34-5.7l.18-.18a8.031,8.031,0,0,1,5.46-2.16h13.739a8.031,8.031,0,0,1,5.46,2.16l.18.18a8,8,0,0,1,2.34,5.64Zm8.761,24.779a.809.809,0,0,1-.84.78.794.794,0,0,1-.78-.78V98.241a.794.794,0,0,1,.78-.78.809.809,0,0,1,.84.78ZM483.563,109.4a10.8,10.8,0,1,1,0,21.6h-7.739a14.2,14.2,0,0,1-14.1-14.1v-5.34a14.239,14.239,0,0,1,14.1-14.1h14.819a.808.808,0,0,1,.84.78.82.82,0,0,1-.84.84H475.824a12.548,12.548,0,0,0-12.479,12.479v5.34a12.547,12.547,0,0,0,12.479,12.479h7.739a9.179,9.179,0,1,0,0-18.359h-7.68a.821.821,0,0,1-.84-.84.809.809,0,0,1,.84-.78h7.68Zm17.1,20.759a.72.72,0,0,1-1.44,0V100.221a2.75,2.75,0,0,1,2.76-2.76,2.643,2.643,0,0,1,2.16,1.08l23.639,30.479a1.136,1.136,0,0,0,.96.54,1.345,1.345,0,0,0,1.38-1.32V98.3a.72.72,0,0,1,1.44,0V128.24A2.791,2.791,0,0,1,528.8,131a2.643,2.643,0,0,1-2.16-1.08L503,99.441a1.221,1.221,0,0,0-.96-.54,1.346,1.346,0,0,0-1.38,1.32Zm39.3,0a.72.72,0,0,1-1.44,0V100.221a2.75,2.75,0,0,1,2.76-2.76,2.643,2.643,0,0,1,2.16,1.08l23.639,30.479a1.136,1.136,0,0,0,.96.54,1.345,1.345,0,0,0,1.38-1.32V98.3a.72.72,0,0,1,1.44,0V128.24A2.791,2.791,0,0,1,568.1,131a2.643,2.643,0,0,1-2.16-1.08L542.3,99.441a1.222,1.222,0,0,0-.96-.54,1.345,1.345,0,0,0-1.38,1.32Zm63.778-32.7a.809.809,0,0,1,.84.78.82.82,0,0,1-.84.84H591.924a12.548,12.548,0,0,0-12.479,12.479v1.86h22.2a.794.794,0,0,1,.779.78.808.808,0,0,1-.779.84h-22.2v1.86a12.547,12.547,0,0,0,12.479,12.479h11.819a.821.821,0,0,1,.84.84.809.809,0,0,1-.84.78H591.924a14.239,14.239,0,0,1-14.1-14.1v-5.34a14.238,14.238,0,0,1,14.1-14.1Zm36.72,7.979a.8.8,0,0,1-.78.78.808.808,0,0,1-.84-.78,6.392,6.392,0,0,0-1.86-4.56l-.6-.48a6.072,6.072,0,0,0-3.9-1.38H618.743a6.36,6.36,0,0,0-3.96,1.38l-.54.48a6.4,6.4,0,0,0-1.859,4.56c0,13.02,28.379,3.24,28.379,17.52a8.067,8.067,0,0,1-7.979,8.04h-14.46a8,8,0,0,1-5.64-2.34l-.18-.24a7.862,7.862,0,0,1-2.16-5.16v-.3a.8.8,0,0,1,.78-.78.809.809,0,0,1,.84.78,6.4,6.4,0,0,0,1.68,4.32l.18.24a6.358,6.358,0,0,0,4.5,1.86h14.46a6.414,6.414,0,0,0,6.359-6.419c0-7.62-9.18-6.84-13.859-7.98-8.16-1.02-14.52-2.88-14.52-9.54a8.136,8.136,0,0,1,2.34-5.7l.18-.18a8.031,8.031,0,0,1,5.46-2.16h13.739a8.031,8.031,0,0,1,5.46,2.16l.181.18a8,8,0,0,1,2.34,5.64Zm18.78,24.779a.794.794,0,0,1-.779.78.808.808,0,0,1-.84-.78V99.081H644.6a.809.809,0,0,1-.78-.84.794.794,0,0,1,.78-.78h27.658a.794.794,0,0,1,.78.78.809.809,0,0,1-.78.84h-13.02Z" style="fill: none"/>
+                        </clipPath>
+                    </defs>
+                    <g id="clip">
+                        <g style="clip-path: url(#clip-path)">
+                            <polyline id="path" class="animate" points="317.066 58.632 316.066 14.632 332.066 19.632 303.066 19.632 303.066 50.632 298.066 58.632 268.066 53.632 269.066 45.632 272.066 51.632 277.066 51.632 296.601 52.012 298.066 45.632 296.436 39.243 274.197 35.045 269.066 27.632 272.066 21.632 278.066 21.632 295.066 21.632 300.066 27.632 300.066 15.632 271.066 15.632 261.066 37.632 241.399 37.673 264.066 53.632 247.672 53.222 242.598 48.714 237.711 44.203 237.066 39.632 237.286 30.939 240.065 25.37 247.383 20.577 264.066 19.632 264.066 15.632 253.066 15.632 230.066 21.632 230.066 51.632 226.066 51.632 202.066 21.632 198.066 21.632 198.066 53.632 191.066 19.632 191.066 51.632 187.066 51.632 163.066 21.632 158.066 21.632 158.066 56.632 157.585 53.749 153.066 26.632 133.066 26.632 134.066 33.632 143.066 31.632 148.503 33.822 153.066 42.632 151.28 49.209 143.066 51.632 130.399 52.012 124.129 48.577 121.066 39.632 121.066 33.632 123.91 25.439 130.662 20.762 150.066 21.632 153.066 15.632 117.066 15.632 117.066 56.632 112.066 56.632 112.066 15.632 109.066 15.632 107.066 58.632 72.066 58.632 70.066 44.632 74.066 44.632 76.066 51.632 82.066 51.632 99.066 52.012 104.066 45.632 100.889 39.394 82.157 35 76.878 31.961 74.066 27.632 78.066 21.632 100.066 21.632 104.066 27.632 105.066 15.632 74.066 15.632 66.066 36.632 45.399 36.863 67.066 51.632 54.066 51.632 48.24 49.855 43.607 44.084 43.066 33.632 43.797 26.012 51.618 20.573 67.066 21.632 70.066 15.632 14.066 15.632 7.066 26.632 7.066 46.632 10.066 51.632 26.732 52.012 34.391 45.912 34.391 27.84 26.13 20.778 8.874 21.344 0.066 21.632" style="fill: none;stroke: #fff;stroke-miterlimit: 10;stroke-width: 4px"/>
+                        </g>
+                    </g>
+                </svg>
+            </h1>
+        </div>
+        
+        <div id="section1" class="section flex-center" data-ui="wheel-section" data-down-time=0 data-up-time=2000>
+            
+        </div>
+        <div id="section2" class="section" data-ui="wheel-section" data-down-time=1000 data-up-time=1500>
+            <div class="about about-1">
+                <div class="serviceCon">
+                    <h2>Web Standard Publishing <small><strong>웹 퍼블리싱 / 코딩</strong></small></h2>
+                    <p>PSD 및 제플린 디자인 파일을 제공받아 HTML / CSS / JS 파일로 제공 합니다. <br>
+                        일반 적인 PC전용 웹페이지는 물론 모바일 / 반응형 페이지를 제작 합니다. <br>기본적인 인터렉션 스크립트를 포함 합니다.</p>
+                    <p class="lv">Lv.1</p>
+                </div>
+            </div>
+            <div class="about about-2">
+                <div class="serviceCon">
+                    <h2>Interaction Developement<small><strong>인터렉션 개발 / UI 개발 / 웹 애니메이션 개발</strong></small></h2>
+                    <p>서비스 전체에 걸쳐 사용자와 상호작용하는 인터렉션 및 애니메이션을 제작 합니다. <br>
+                        마우스 오버시 간단한 전환효과부터 키 프레임 단위 애니메이션까지 웹 상의 표현 가능한 모든 인터렉션을 구현 합니다.</p>
+                    <p class="lv">Lv.2~3</p>
+                </div>
+            </div>
+            <div class="about about-3">
+                <div class="serviceCon">
+                    <h2>Front - End Developement  <small><strong>프론트엔드 / 싱글 페이지 애플리케이션 개발</strong></small></h2>
+                    <p>서버로부터 완전한 새로운 페이지를 불러오지 않고 백엔드 API에서 가져온 데이터의 출력, 입력을 통해 현재의 페이지를 동적으로 다시 작성함으로써 <br> 사용자와 소통하는 웹 애플리케이션이나 웹사이트를 제작합니다</p>
+                    <p class="lv">Lv.3</p>
+                </div>
+            </div>
+        </div>
+        <div id="section3" class="section flex-center" data-ui="wheel-section" data-down-time=1500 data-up-time=0>
+            
+            <div class="description">
+            <div class="typetextBlock">
+                <p class="type-text" title="very Awesome^2000~15; more Beautiful^2000~16; more Interactive^2000~16"></p>
+                <p class="small">and Work Feels Like Play!!</p>
+           </div>
+                <p class="text">
+                    안녕하세요. <br>디자인네스트에서 <strong>인코딩</strong>으로 이름이 변경 되었습니다. <br>
+                    저희 인코딩은 <strong>웹 사이트 퍼블리싱</strong> 및 스크립트를 이용한
+                    <strong>인터렉션 개발</strong>, 그리고 프레임 워크를 이용한 <strong>프론트 엔드 개발</strong>을 하고있습니다. <br>
+                    표준 웹사이트 퍼블리싱에서 부터 싱글페이지 어플리케이션까지, 백 엔드 개발을 제외한 프론트 단에서 구현 가능한 모든 작업을 진행 하고있습니다.
+                </p>
+                <p class="text">특히 인터렉션 쪽에 특화 되어있으며 이는 웹페이지를 방문 하는 이용자에게 새롭고 재미있는 경험을 선사 할 것 입니다.</p>
+                <p class="text">자세한 서비스 내역은 <strong>우측의 리스트</strong>를 확인하여 주세요.</p>
+                <p class="mT20" style="text-align: right; width: 100%;">- Incoding</p>
+            </div>
+            <div class="serviceContents">
+                <button class="closeArea"></button>
+                <div class="service">
+                    <div class="cube">
+                        <div class="face face-1">
+                            <div class="transformWrapper">
+                                <img src="../img/w3c2.png" alt="">
+                                <h2>PC / MOBILE 웹표준 퍼블리싱</h2>
+                            </div>
+                        </div>
+                        <div class="faсe face-2">
+                            <div class="descriptionContent">
+                                <div class="wrapper">
+                                    <div class="conImage"><img src="../img/servive_coding.png" alt=""></div>
+                                    <div class="popUpHeader">
+
+                                        <h2 class="popupTitle">PC / MOBILE  웹표준 퍼블리싱 - 코딩</h2>
+                                    </div>
+                                    <div class="item benefits">
+                                        웹 프로젝트 진행시 가장 기본이 되지만 코딩 방식에 따라서 이후의 인터렉션 추가 및 개발 편의성면에서 차이가 나게 됩니다. <br>
+                                        디자인 PSD파일 혹은 제플린을 제공받아 HTML / CSS / Javascript / jQuery 를 사용하여 개발이 가능한 형태의 코딩 페이지를 제작 합니다. <br>
+                                        주로 PC / Mobile 용 웹 사이트를 작업 하게 되며 기본적인 인터렉션을 제공 합니다. <br>
+                                        프로젝트에 필요한 코드만 사용함으로 다른 어떠한 방식보다 빠르고 코드가 간결합니다.<br>
+                                        기본적으로 크로스 브라우징을 지원하며 CHROME, SAFARI, FIREFOX , IE10+ 이상의 브라우저를 지원합니다. <br>
+                                        IE9 이하의 하위 브라우저 호환은 추가로 문의 바랍니다.
+
+                                    </div>
+                                    <div class="item examples">
+                                        <h3 class="title">Examples</h3>
+                                        <ul>
+                                            <li>기업용 오피셜 사이트, 공공기관 사이트, 쇼핑몰 사이트, 이벤트 / 프로모션 사이트 등</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="closeService" type="button" title="닫기"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service">
+                    <div class="cube">
+                        <div class="face face-1">
+                            <div class="transformWrapper">
+                                <img src="../img/jquery.png" alt="">
+                                <h2>커스텀 폼 및 웹 페이지 인터렉션</h2>
+                            </div>
+                        </div>
+                        <div class="faсe face-2">
+                            <div class="descriptionContent">
+                                <div class="wrapper">
+                                    <div class="conImage"><img src="../img/servive_interaction.png" alt=""></div>
+                                    <div class="popUpHeader">
+
+                                        <h2 class="popupTitle">커스텀 폼 및 웹 페이지 인터렉션</h2>
+                                    </div>
+                                    <div class="item benefits">
+                                        순수 CSS3 와 자바스크립트 및 자바스크립트 라이브러리를 사용하여 서비스 전체에 걸쳐 사용자와 상호작용하는 인터렉션을 제작 합니다. <br>
+                                        웹사이트에 가장 흔히 접할 수 있는 네비게이션 / 배너 슬라이더 / 탭 컨텐츠 외 각종 컨텐츠의 상호 작용을 제작 하고,  <br>사이트에 맞게 디자인이 된 FORM 양식의 커스터마이징, DATE PICKER / TIME PICKER 등 <br> 사용자가 조금 더 편리하게 접근하여 사용 할 수 있도록 웹페이지 상의 표현 가능한 모든 인터렉션을 구현 합니다.
+                                    </div>
+                                    <div class="item examples">
+                                        <h3 class="title">Examples</h3>
+                                        <ul>
+                                            <li>기업용 오피셜 사이트, 공공기관 사이트, 쇼핑몰 사이트, 이벤트 / 프로모션 사이트 등</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="closeService" type="button" title="닫기"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service">
+                    <div class="cube">
+                        <div class="face face-1">
+                            <div class="transformWrapper">
+                                <img src="../img/spa.png" alt="">
+                                <h2>싱글페이지 애플리 케이션<br>(Ajax / Angular.js / React.js / Vue.js)</h2>
+                            </div>
+                        </div>
+                        <div class="faсe face-2">
+                            <div class="descriptionContent">
+                                <div class="wrapper">
+                                    <div class="conImage"><img src="../img/servive_spa.png" alt=""></div>
+                                    <div class="popUpHeader">
+
+                                        <h2 class="popupTitle">싱글페이지 애플리 케이션 제작</h2>
+                                    </div>
+                                    <div class="item benefits">
+                                        서버로부터 완전한 새로운 페이지를 불러오지 않고 백엔드 API에서 가져온 데이터의 출력, 입력을 통해 현재의 페이지를 동적으로 다시 작성함으로써 사용자와 소통하는 웹 애플리케이션이나 웹사이트를 제작합니다 <br>
+                                        연속되는 페이지들 간의 사용자 경험의 간섭을 막아주고 네이티브 애플리케이션처럼 동작하도록 하고 데이터를 동적으로 불러들여 문서에 추가 합니다.
+                                    </div>
+                                    <div class="item examples">
+                                        <h3 class="title">Examples</h3>
+                                        <ul>
+                                            <li>기업용 오피셜 사이트, 공공기관 사이트, 쇼핑몰 사이트, 이벤트 / 프로모션 사이트 등</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="closeService" type="button" title="닫기"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service">
+                    <div class="cube">
+                        <div class="face face-1">
+                            <div class="transformWrapper">
+                                <img src="../img/bootstrap3.png" alt="">
+                                <h2>반응형 웹 퍼블리싱</h2>
+                            </div>
+                        </div>
+                        <div class="faсe face-2">
+                            <div class="descriptionContent">
+                                <div class="wrapper">
+                                    <div class="conImage"><img src="../img/servive_responsive.png" alt=""></div>
+                                    <div class="popUpHeader">
+
+                                        <h2 class="popupTitle">반응형 웹 퍼블리싱 - 코딩</h2>
+                                    </div>
+                                    <div class="item benefits">
+                                        CSS MEDIA QUERY를 이용하여  PC / MOBILE 각각의 백엔드 개발이 필요없이 <br> 단일 소스로 PC / TABLET / MOBILE 등 각종 디바이스의 화면 사이즈에 최적화 되어 <br>레이아웃이 변경되는 페이지를 제작 합니다. <br>
+                                        개발 편의를 위해 부트스트랩 등의 프레임워크를 기반으로하여 제작이 가능합니다. <br>
+                                        기본적으로 크로스 브라우징을 지원하며 CHROME, SAFARI, FIREFOX , IE10+ 이상의 브라우저를 지원합니다. <br>
+                                        IE9 이하의 브라우저는 지원하지 않습니다.
+                                    </div>
+                                    <div class="item examples">
+                                        <h3 class="title">Examples</h3>
+                                        <ul>
+                                            <li>기업용 오피셜 사이트, 공공기관 사이트, 쇼핑몰 사이트 등</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="closeService" type="button" title="닫기"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service">
+                    <div class="cube">
+                        <div class="face face-1">
+                            <div class="transformWrapper">
+                                <img src="../img/gsap.png" alt="">
+                                <h2>특수 레이아웃 및 웹 애니메이션 <br> (이벤트 및 프로모션 사이트)</h2>
+                            </div>
+                        </div>
+                        <div class="faсe face-2">
+                            <div class="descriptionContent">
+                                <div class="wrapper">
+                                    <div class="conImage"><img src="../img/servive_ani.png" alt=""></div>
+                                    <div class="popUpHeader">
+                                        <h2 class="popupTitle">특수 레이아웃 및 웹 애니메이션</h2>
+                                    </div>
+                                    <div class="item benefits">
+                                        CSS3 및 GSAP TWEENMAX / THREE.JS / WebGL 등의 JAVASCRIPT 라이브러리를 사용하여 한층더 인터렉티브한 컨텐츠를 제작 합니다. <br> 
+                                        사이트 초입에 인트로 페이지 / 광고 / 프로모션 사이트처럼 소비자의 시선을 잡아야 하는 사이트에 잘 어울리며, <br> 일반 오피셜 사이트에 적용을 할 경우 더욱 고급스러운 인상을 줄 수 있습니다. <br>
+                                        요청하는 난이도에 따라 다르지만 일반 웹사이트에 비해 충분한 기간을 두고 전체 기획 / 디자인 프로세스가 픽스가 된 후 진행을 하여야 합니다.
+                                        
+                                    </div>
+                                    <div class="item examples">
+                                        <h3 class="title">Examples</h3>
+                                        <ul>
+                                            <li>오피셜 / 광고 / 이벤트 / 프로모션 사이트 등</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="closeService" type="button" title="닫기"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service">
+                    <div class="cube">
+                        <div class="face face-1">
+                            <div class="transformWrapper">
+                                <img src="../img/api.png" alt="">
+                                <h2>백엔드 데이터 API 연동</h2>
+                            </div>
+                        </div>
+                        <div class="faсe face-2">
+                            <div class="descriptionContent">
+                                <div class="wrapper">
+                                    <div class="conImage"><img src="../img/servive_api.png" alt=""></div>
+                                    <div class="popUpHeader">
+                                        <h2 class="popupTitle">백엔드 데이터 API 연동</h2>
+                                    </div>
+                                    <div class="item benefits">
+                                        백엔드 API에서 가져온 데이터의 출력, 입력을 통한 비지니스 로직 구성 및 사용자와 상호 반응하는 인터페이스를 제작 합니다.
+
+                                    </div>
+                                    <div class="item examples">
+                                        <h3 class="title">Examples</h3>
+                                        <ul>
+                                            <li>기업용 오피셜 사이트, 공공기관 사이트, 쇼핑몰 사이트, 이벤트 / 프로모션 사이트 등</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="closeService" type="button" title="닫기"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service">
+                    <div class="cube">
+                        <div class="face face-1">
+                            <div class="transformWrapper">
+                                <img src="../img/technical.png" alt="">
+                                <h2>사이트 운영 / 고도화 및 트러블 슈팅</h2>
+                            </div>
+                        </div>
+                        <div class="faсe face-2">
+                            <div class="descriptionContent">
+                                <div class="wrapper">
+                                    <div class="conImage"><img src="../img/servive_operate.png" alt=""></div>
+                                    <div class="popUpHeader">
+                                        <h2 class="popupTitle">사이트 운영 / 고도화 및 트러블 슈팅</h2>
+                                    </div>
+                                    <div class="item benefits">
+                                        월 단위 금액으로 사이트의 유지보수시 발생하는 코딩 및 UI 스크립트 지원 합니다. <br>
+                                        서비스하고 있는 웹사이트의 부분적 개편 및 고도화 작업을 진행합니다. <br>
+                                        신규 추가 페이지 제작 / 이벤트 &amp; 프로모션 페이지 그리고 이메일 템플릿 등을 제작 합니다. <br>
+                                        기존 사이트의 코드를 망가트리지 않고 사이트 레이아웃을 추가 / 변경 하거나 사용자 인터렉션을 추가 합니다. <br>
+                                        현재 진행중인 프로젝트의 프론트 단에 문제가 있는 경우 해당 문제를 찾아 해결 합니다.
+                                        
+                                    </div>
+                                    <div class="item examples">
+                                        <h3 class="title">Examples</h3>
+                                        <ul>
+                                            <li>기업용 오피셜 사이트, 공공기관 사이트, 쇼핑몰 사이트, 이벤트 / 프로모션 사이트 등</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="closeService" type="button" title="닫기"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service">
+                    <div class="cube">
+                        <div class="face face-1">
+                            <div class="transformWrapper">
+                                <img src="../img/kiosk2.png" alt="">
+                                <h2>키오스크 및 단일기기용 컨텐츠 UI 제작</h2>
+                            </div>
+                        </div>
+                        <div class="faсe face-2">
+                            <div class="descriptionContent">
+                                <div class="wrapper">
+                                    <div class="conImage"><img src="../img/interactive.png" alt=""></div>
+                                    <div class="popUpHeader">
+                                        <h2 class="popupTitle">키오스크 및 전용 컨텐츠 UI 제작</h2>
+                                    </div>
+                                    <div class="item benefits">
+                                        터치 기반의 키오스크 및 전용 타블렛 혹은 터치 스크린으로 제작되는 서비스의 UI / UX / INTERACTION 제작 <br>
+                                        스마트 티비 및 IP TV 내의 UI 및 인터렉션을 제작합니다. <br>
+                                        한 종류의 기기에서 최적화 하여 하나의 목적으로 만들어지는 컨텐츠를 제작 합니다.
+                                    </div>
+                                    <div class="item examples">
+                                        <h3 class="title">Examples</h3>
+                                        <ul>
+                                            <li>매장용 키오스크, 인포시스템, 예약 시스템, 스마트 티비 등 </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="closeService" type="button" title="닫기"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service">
+                    <div class="cube">
+                        <div class="face face-1">
+                            <div class="transformWrapper">
+                                <img src="../img/flash.png" alt="">
+                                <h2>플래시 컨텐츠 HTML5 컨텐츠로 변환</h2>
+                            </div>
+                        </div>
+                        <div class="faсe face-2">
+                            <div class="descriptionContent">
+                                <div class="wrapper">
+                                    <div class="conImage"><img src="../img/servive_flash.png" alt=""></div>
+                                    <div class="popUpHeader">
+
+                                        <h2 class="popupTitle">플래시 컨텐츠 HTML5 컨텐츠로 변환</h2>
+                                    </div>
+                                    <div class="item benefits">
+                                        2020년이면 완전히 수명이 다하는 플래시 제작 컨텐츠를 HTML5 와 CSS 그리고 JAVASCRIPT 파일로 변경합니다. <br> 플래시의 사용자 경험을 그대로 가져 갈 수 있으며 최신의 모던 브라우저 에서 더이상 플래시 경고를 보지 않을 수 있습니다. <br>
+                                        물론 모바일에서 보이지 않는 문제 또한 모두 사라집니다.
+                                    </div>
+                                    <div class="item examples">
+                                        <h3 class="title">Examples</h3>
+                                        <ul>
+                                            <li>기업용 오피셜 사이트, 공공기관 사이트, 쇼핑몰 사이트, 이벤트 / 프로모션 사이트 등</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="closeService" type="button" title="닫기"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="categories">
+                    <div class="categoryName">Web Standard Publishing</div>
+                    <div class="categoryName">Interaction Developement</div>
+                    <div class="categoryName">Front - End Developement</div>
+                </div>
+                <div class="row-lines">
+                    <div class="row-line row-line-1"></div>
+                    <div class="row-line row-line-2"></div>
+                    <div class="row-line row-line-3"></div>
+                    <div class="row-line row-line-4"></div>
+                </div>
+            </div>
+        </div>
+        <div id="section4" class="section flex-center" data-ui="wheel-section" data-down-time=1500 data-up-time=0>
+            <div class="description">
+                <ul class="desc-title">
+                    <li class="active"><h3>프로젝트 개발 전반</h3></li>
+                    <li><h3>서비스 항목</h3></li>
+                    <li><h3>웹 퍼블리싱 &amp; 인터렉션 개발</h3></li>
+                    <li><h3>프론트 엔드 &amp; 기타 컨텐츠 개발</h3></li>
+                </ul>
+<!--
+                <ul class="desc-title">
+                    <li class="active">프로젝트 개발 전반<br><small>Our Promise..</small></li>
+                    <li>서비스 항목<br><small>What can we do?</small></li>
+                    <li>웹 퍼블리싱 &amp; 인터렉션 개발<br><small>Web Publishing  &amp; Interaction Developement</small></li>
+                    <li>프론트 엔드 &amp; 기타 컨텐츠 개발<br><small>Front - End &amp; ETC Contents Developement</small></li>
+                </ul>
+-->
+                <div class="pagingBlock">
+                    <ul class="paging">
+                        <li class="active"><button type="button">1</button></li>
+                        <li><button type="button">2</button></li>
+                        <li><button type="button">3</button></li>
+                        <li><button type="button">4</button></li>
+                    </ul>
+                    <div class="block"></div>
+                </div>
+            </div>
+            <div class="cubeblock">
+                <div class="cube">
+                    <div class="side  front">
+                        <div class="sideContents">
+                            <div class="contentsTop videoBlock">
+                                <video loop="loop" muted="" width="100%" height="auto" id="dev_video" preload="none">
+                                    <source type="video/mp4" src="../img/dev.mp4">
+                                </video>
+                                <p class="textSlogan">our works <br> would be your <br> possibility. <span>- incoding</span></p>
+                            </div>
+                            <div class="contentsBottom">
+                                <h3><i class="fas fa-dice-one"></i> OUR PROMISE</h3>
+                                <ul class="bulit">
+                                    <li><b>최고의 코드 품질</b>개발자가 쉽게 백 엔드 개발을 진행 할 수 있도록 최적의 코드로 이루어진 결과물을 제공 합니다.</li>
+                                    <li><b>직접 작성된 코드</b>진행하는 프로젝트만을 위한 군더더기 없는 파일을 제공 합니다.</li>
+                                    <li><b>유연성있는 파일 구조</b> 클라이언트가 요청하는 네이밍/폴더 구조로 파일을 전달합니다.</li>
+                                    <li><b>일정내의 완벽한 작업</b>요청 일정 내에 신속하고 정확하게 결과물을 제공 합니다.</li>
+                                    <li><b>디자인에 대한 이해</b>디자인 의도를 정확히 이해하고 디자인 파일보다 더 퀄리티가 높은 결과물을 제공하려 노력합니다.</li>
+                                    <li><b>신속한 피드백</b>업무에 대한 요청 / 수정 사항에 대해 신속하게 대응하여 드립니다.</li>
+                                    <li><b>결과물에 대한 지원</b>결과물에 문제가 있다면 해당 부분에 대한 문제가 해결되도록 지속적으로 지원 해드리겠습니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="side left">
+                        <div class="sideContents contents_service">
+                            <div class="seviceCube" data-parallaxify-background-range="20">
+                                <div class="cubeCon">
+                                    <div class="contentsBottom" >
+                                        <h3><i class="fas fa-dice-two"></i> What can we do?</h3>
+                                        <ul class="bulit">
+                                            <li><b>PSD TO HTML</b>디자인 파일을 HTML / CSS 파일로 변환하여 제공, 기본적인 인터렉션 스크립트를 포함 합니다. </li>
+                                            <li><b>프레임워크를 사용한 웹페이지 제작</b>부트스트랩 및 아이오닉 등 프레임워크를 기반으로하여 페이지를 제작합니다.</li>
+                                            <li><b>User Interface Script 개발</b>서비스 전체에 걸쳐 사용자와 상호작용하는 모든 인터렉션을 제작 합니다.</li>
+
+                                            <li><b>싱글페이지 애플리케이션 제작</b>ANGULAR.JS 및 REACT / VUE등의 프레임 워크를 이용한 싱글페이지 <br> 어플리케이션을 제작합니다.</li>
+                                            <li><b>백엔드 데이터 API 연동</b>백엔드에서 가져온 데이터의 출력, 입력을 통한 비지니스 로직 구성  <br> 및 사용자와 상호 반응하는 인터페이스를 제작 합니다.</li>
+                                            <li><b>기타 컨텐츠 제작</b>교육용 컨텐츠 / 키오스크 등
+        스크립트와 엔진을 이용한 다양한 <br>디바이스에서 서비스를 제공하는 컨텐츠를 제작 합니다.</li>
+                                           <li><b>프로젝트 고도화 / 트러블 슈팅</b>사이트의 코드를 망가트리지 않고 사이트 레이아웃을 <br> 변경 하거나 고도화 작업 진행 합니다.</li>
+                                           <li><b>사이트 유지 보수 및 운영</b>사이트의 부분적 개편이나 신규 페이지 / 이벤트<br> &amp; 프로모션 / 이메일 템플릿을 제작 합니다</li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--
+                    <div class="side left">
+                        <div class="sideContents">
+                            <div class="contentsTop">
+                                <div class="seriveImg" data-parallaxify-background-range="10">
+                                    <p class="img1" data-parallaxify-range="30"><span>in</span>coding</p>
+                                    <p class="img2" data-parallaxify-range="40">WEB PUBLISHING</p>
+                                    <p class="img3" data-parallaxify-range="60">INTERACTION DEV</p>
+                                    <p class="img4" data-parallaxify-range="80">FRONT-END DEV</p>
+                                </div>
+                                <section class="hero-container">
+                                    <div class="animation-container rellax" data-rellax-speed="-7">
+                                        <div class="animation-pages-container">
+                                            <div class="animation-parts-page initial-load">
+                                                <div class="box box3"></div>
+                                            </div>
+                                            <div class="animation-parts-page initial-load">
+                                                <div class="box box4"></div>
+                                            </div>
+                                            <div class="animation-parts-page initial-load">
+                                                <div class="box box1"></div>
+                                            </div>
+                                            <div class="animation-parts-page initial-load">
+                                                <div class="box box3"></div>
+                                            </div>
+                                            <div class="animation-parts-page initial-load">
+                                                <div class="box box4"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="contentsBottom">
+                                <ul class="bulit">
+                                    <li><b>PSD TO HTML</b>디자인 파일을 HTML / CSS 파일로 변환하여 제공, 기본적인 인터렉션 스크립트를 포함 합니다. </li>
+                                    <li><b>프레임워크를 사용한 웹페이지 제작</b>부트스트랩 및 아이오닉 등 프레임워크를 기반으로하여 페이지를 제작합니다.</li>
+                                    <li><b>User Interface Script 개발</b>서비스 전체에 걸쳐 사용자와 상호작용하는 모든 인터렉션을 제작 합니다.</li>
+
+                                    <li><b>싱글페이지 애플리케이션 제작</b>ANGULAR.JS 및 REACT / VUE등의 프레임 워크를 이용한 싱글페이지 어플리케이션을 제작합니다.</li>
+                                    <li><b>백엔드 데이터 API 연동</b>백엔드에서 가져온 데이터의 출력, 입력을 통한 비지니스 로직 구성 및 사용자와 상호 반응하는 인터페이스를 제작 합니다.</li>
+                                    <li><b>기타 컨텐츠 제작</b>교육용 컨텐츠 / 키오스크 등
+스크립트와 엔진을 이용한 다양한 디바이스에서 서비스를 제공하는 컨텐츠를 제작 합니다.</li>
+                                   <li><b>프로젝트 고도화 / 트러블 슈팅</b>사이트의 코드를 망가트리지 않고 사이트 레이아웃을 변경 하거나 고도화 작업 진행 합니다.</li>
+                                   <li><b>사이트 유지 보수 및 운영</b>사이트의 부분적 개편이나 신규 페이지 / 이벤트 &amp; 프로모션 / 이메일 템플릿을 제작 합니다</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+-->
+                    <div class="side back">
+                        <div class="sideContents">
+                            <div class="contentsTop">
+                                <p class="textWork">Latest works</p>
+                                <div class="swiper-container main-slider swiper01 loading">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/v50.jpg)">
+                                                <img src="../img/work/v50.jpg" class="entity-img" />
+                                            </figure>
+                                            <div class="slide-content">
+                                                <p class="title">LG V50 ThinQ</p>
+                                                <span class="caption">LG V50 ThinQ 온라인 체험존 UI 인터렉션 트러블 슈팅</span>
+                                                <p class="tag"><a href="#">SITE LINK</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/sk-iot.jpg)">
+                                                <img src="../img/work/sk-iot.jpg" class="entity-img" />
+                                            </figure>
+                                            <div class="slide-content">
+                                                <p class="title">SK telecom - IoT Potal</p>
+                                                <span class="caption">SK텔레콤 IOT포털 사이트 퍼블리싱 / UI 인터렉션 개발 </span>
+                                                <p class="tag"><a href="#">SITE LINK</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/nepa.jpg)">
+                                                <img src="../img/work/nepa.jpg" class="entity-img" />
+                                            </figure>
+                                            <div class="slide-content">
+                                                <p class="title">네파 웹 브로슈어 <span>- PC / MOBILE</span></p>
+                                                <span class="caption">네파 롱패딩 웹 브로슈어 퍼블리싱 / UI 인터렉션 개발</span>
+                                                <p class="tag"><a href="#">SITE LINK</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/zocbo.jpg)">
+                                                <img src="../img/work/zocbo.jpg" class="entity-img" />
+                                            </figure>
+                                            <div class="slide-content">
+                                                <p class="title">DESIGN M4 <span>- RESPONSIVE WEB</span></p>
+                                                <span class="caption">족보닷컴 모바일 사이트 퍼블리싱 / UI 개발</span>
+                                                <p class="tag"><a href="#">SITE LINK</a></p>
+                                            </div>
+                                        </div>
+<!--
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/semi.jpg)">
+                                                <img src="../img/work/semi.jpg" class="entity-img" />
+                                            </figure>
+                                            <div class="slide-content">
+                                                <p class="title">SAMSUNG SEMICONDUCTOR <span>- RESPONSIVE WEB</span></p>
+                                                <span class="caption">삼성전자 반도체 글로벌 사이트 사이트 퍼블리싱 / UI 인터렉션 개발</span>
+                                                <p class="tag"><a href="#" class="glow-on-hover">SITE LINK</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/tree.jpg)">
+                                                <img src="../img/work/tree.jpg" class="entity-img" />
+                                            </figure>
+                                            <div class="slide-content">
+                                                <p class="title">WEMADE TREE <span>- PC / MOBILE</span></p>
+                                                <span class="caption">위메이드 블록체인 서비스 오피셜 사이트 퍼블리싱 / UI 인터렉션 개발</span>
+                                                <p class="tag"><a href="#" class="glow-on-hover">SITE LINK</a></p>
+                                            </div>
+                                        </div>
+-->
+                                    </div>
+                                    <!-- If we need navigation buttons -->
+                                    <div class="swiper-button-prev swiper-button-white"></div>
+                                    <div class="swiper-button-next swiper-button-white"></div>
+                                </div>
+                                <!-- Thumbnail navigation -->
+                                <div class="swiper-container nav-slider swiper01 loading">
+                                    <div class="swiper-wrapper" role="navigation">
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/v50.jpg)">
+                                                <img src="../img/work/v50.jpg" class="entity-img" />
+                                            </figure>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/sk-iot.jpg)">
+                                                <img src="../img/work/sk-iot.jpg" class="entity-img" />
+                                            </figure>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/nepa_s.jpg)">
+                                                <img src="../img/work/nepa_s.jpg" class="entity-img" />
+                                            </figure>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/zocbo.jpg)">
+                                                <img src="../img/work/zocbo.jpg" class="entity-img" />
+                                            </figure>
+                                        </div>
+<!--
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/semi.jpg)">
+                                                <img src="../img/work/semi.jpg" class="entity-img" />
+                                            </figure>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/tree.jpg)">
+                                                <img src="../img/work/tree.jpg" class="entity-img" />
+                                            </figure>
+                                        </div>
+-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contentsBottom">
+                                <h3><i class="fas fa-dice-three"></i>  Web Publishing  &amp; Interaction Developement</h3>
+                                <ul class="bulit">
+                                    <li><b>W3C의 유효성이 검사 된 코드</b> - html doctype을 바탕으로 문서에 오류나 에러가 없는 코드를 제공 합니다.</li>
+                                    <li><b>HTML5 시맨틱 코드 (SEO 최적화)</b> - 검색 로봇이 웹페이지를 쉽게 이해하고 탐색 할 수 있도록 문서의 의미에 맞게 HTML을 작성 합니다.</li>
+                                    <li><b>모든 최신 브라우저 호환 가능</b> - CHROME, FIREFOX, IE 모든 브라우저에서 동일하게 보여지도록 페이지 제작 합니다.</li>
+                                    <li><b>반응형 웹 퍼블리싱</b>MediaQuery를 사용하여 PC, Tablet, Mobile 등 모든기기에서 최적화된 레이아웃의 페이지를 제작 합니다.</li>
+                                    <li><b>특수 레이아웃 및 페이지 인터렉션</b>단순히 화면에 보여주는 것이 아닌 사용자와 직접 반응하는 인터렉티브한 컨텐츠를 제작 합니다.</li>
+                                    <li><b>페이지 애니메이션</b>인트로 / 이벤트 / 프로모션 사이트 등에 사용 될 수 있는 스크립트로 이루어진 모션을 제작 합니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="side  right">
+                        <div class="sideContents">
+                            <div class="contentsTop">
+                                <p class="textWork">Latest works </p>
+                                <div class="swiper-container main-slider swiper02 loading">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/zocbo.jpg)">
+                                                <img src="../img/work/zocbo.jpg" class="entity-img" />
+                                            </figure>
+                                            <div class="slide-content">
+                                                <p class="title">족보닷컷</p>
+                                                <div class="caption">족보닷컴 모바일 사이트 퍼블리싱 / UI 개발 </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/animation.jpg)">
+                                                <img src="../img/animation.jpg" class="entity-img" />
+                                            </figure>
+                                            <div class="slide-content">
+                                                <p class="title">대한한국무역공사</p>
+                                                <span class="caption">SK 텔레콤 IOT포털 사이트 퍼블리싱 / UI 개발</span>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/m4_pc.jpg)">
+                                                <img src="../img/work/m4_pc.jpg" class="entity-img" />
+                                            </figure>
+                                            <div class="slide-content">
+                                                <p class="title">DESIGN M4 <span>- RESPONSIVE WEB</span></p>
+                                                <span class="caption">DESIGN M4 반응형 웹퍼블리싱 / UI 인터렉션 / CMS 개발</span>
+                                                <p class="tag"><a href="#">SITE LINK</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/semi.jpg)">
+                                                <img src="../img/work/semi.jpg" class="entity-img" />
+                                            </figure>
+                                            <div class="slide-content">
+                                                <p class="title">SAMSUNG SEMICONDUCTOR <span>- RESPONSIVE WEB</span></p>
+                                                <span class="caption">삼성전자 반도체 글로벌 사이트 사이트 퍼블리싱 / UI 인터렉션 개발</span>
+                                                <p class="tag"><a href="#">SITE LINK</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/tree.jpg)">
+                                                <img src="../img/work/tree.jpg" class="entity-img" />
+                                            </figure>
+                                            <div class="slide-content">
+                                                <p class="title">WEMADE TREE <span>- PC / MOBILE</span></p>
+                                                <span class="caption">위메이드 블록체인 서비스 오피셜 사이트 퍼블리싱 / UI 인터렉션 개발</span>
+                                                <p class="tag"><a href="#">SITE LINK</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- If we need navigation buttons -->
+                                    <div class="swiper-button-prev swiper-button-white"></div>
+                                    <div class="swiper-button-next swiper-button-white"></div>
+                                </div>
+                                <!-- Thumbnail navigation -->
+                                <div class="swiper-container nav-slider swiper02 loading">
+                                    <div class="swiper-wrapper" role="navigation">
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/zocbo.jpg)">
+                                                <img src="../img/work/zocbo.jpg" class="entity-img" />
+                                            </figure>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/animation.jpg)">
+                                                <img src="../img/animation.jpg" class="entity-img" />
+                                            </figure>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/m4_pc.jpg)">
+                                                <img src="../img/work/m4_pc.jpg" class="entity-img" />
+                                            </figure>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/semi.jpg)">
+                                                <img src="../img/work/semi.jpg" class="entity-img" />
+                                            </figure>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <figure class="slide-bgimg" style="background-image:url(../img/work/tree.jpg)">
+                                                <img src="../img/work/tree.jpg" class="entity-img" />
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contentsBottom">
+                                <h3><i class="fas fa-dice-four"></i> Front - End &amp; ETC Contents Developement</h3>
+                                <ul class="bulit">
+                                    <li>PC용 표준 웹사이트 부터 모바일/반응형 웹사이트 까지 디자인 파일과 완벽하게 매칭이 되는 HTML / CSS / JS 파일로 제공 합니다.</li>
+                                    <li>디자이너의 디자인 의도를 정확히 이해하고 디자인 파일보다 더 퀄리티가 높은 결과물을 제공하려 노력합니다.</li>
+                                    <li>단순히 화면에 보여주는 것으로 끝이 아닌 사용자와 직접 반응하는 인터렉티브한 컨텐츠를 제작 합니다.</li>
+                                    <li>개발자가 쉽게 접근하여 백 엔드 개발을 진행 할 수 있도록 최적의 코드로 이루어진 결과물을 제공 합니다.</li>
+                                    <li>백엔드 API에서 가져온 데이터의 출력, 입력을 통한 비지니스 로직 구성 및 사용자와 상호 반응하는 인터페이스를 제작 합니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                  </div>
+            </div>
+        </div>
+        <div id="section5" class="section" data-ui="wheel-section" data-down-time=1500 data-up-time=0 >
+            <h2 class="title"><em>Show Case <span>by incoing</span><i></i></em></h2>
+                <div id="scrollbar" class="scroll-slider">
+                    <div class="scroll-wrapper">
+                        <article class="item-case scroll-slide">
+                            <div class="item-container">
+                                <div class="item-image glow-on-hover">
+                                    <div class="grid__item grid__item--bg">
+                                        <div class="grid__item-img" data-displacement="../img/displacement/7.jpg" data-intensity="-0.65" >
+                                            <img src="../img/work/sk-iot.jpg" alt=""/>
+                                            <img src="../img/emart.jpg" alt=""/>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="item-body">
+                                    <div class="block">
+                                    <h2 class="item-title">PC / MOBILE WEB<br>PUBLISHING / UI DEV</h2>
+                                    <p class="item-info">PC 및 MOBILE 전용 사이트의 HTML / CSS / JS 개발로<br> SHOPPING MALL / OFFICIAL / EVENT / PROMOTION 등 모든 사이트 제작에 기본이 되는 웹페이지 코딩 및 UI 개발</p>
+                                    <p class="pre">적용된 프로젝트 보기</p>
+                                    <ul class="nav tags">
+                                        <li class="nav-item tag"><a href="https://www.sktiot.com/iot/main/index" target="_showcase" class="nav-link glow-on-hover">SK IOT</a></li>
+                                        <li class="nav-item tag "><span>E-MART APP</span></li>
+                                        <li class="nav-item tag"><a href="http://nm.zocbo.com/" target="_showcase" class="nav-link glow-on-hover">족보닷컴</a></li>
+                                        <li class="nav-item tag"><a href="http://designm4.com/" target="_showcase" class="nav-link glow-on-hover">DESIGN M4</a></li>
+                                    </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="item-case scroll-slide">
+                            <div class="item-container">
+                                <div class="item-image glow-on-hover video-preview">
+                                    <video loop="true" poster="../img/animation.jpg" muted="" width="720" height="450"  preload="none">
+                                        <source type="video/mp4" src="../img/animation.mp4">
+                                    </video>
+                                </div>
+                                <div class="item-body">
+                                    <div class="block">
+                                    <h2 class="item-title">WEB BROCHURE /<br>   ANIMATION UI DEV</h2>
+                                    <p class="item-info">CSS3 및 GSAP TWEENMAX 등을 사용하여<br> 페이지 내의 애니메션 및 간단한 게임 개발<br>INTRO / EVENT / PROMOTION SITE 개발에 최적화</p>
+                                    <p class="pre">적용된 프로젝트 보기</p>
+                                    <ul class="nav tags">
+                                        <li class="nav-item tag "><a href="#" class="nav-link glow-on-hover">NEPA BROCHURE</a></li>
+                                        <li class="nav-item tag"><a href="http://lgv50s-thinq.co.kr/" target="_showcase" class="nav-link glow-on-hover">LG v50</a></li>
+                                        <li class="nav-item tag"><a href="http://lgv50s-thinq.co.kr/" target="_showcase" class="nav-link glow-on-hover">JACK POT</a></li>
+                                    </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="item-case scroll-slide">
+                            <div class="item-container">
+                                <div class="item-image glow-on-hover">
+                                    <div class="grid__item grid__item--bg">
+                                        <div class="grid__item-img" data-displacement="../img/displacement/10.jpg" data-intensity="-0.65" >
+                                            <img src="../img/work/oakley-s.jpg" alt=""/>
+                                            <img src="../img/ssd.jpg" alt=""/>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="item-body">
+                                    <div class="block">
+                                    <h2 class="item-title">RESPONSIVE WEB<br>UI DEV</h2>
+                                    <p class="item-info">CSS MEDIA QUERY를 이용하여  <br>PC / MOBILE 각각의 백엔드 개발이 필요없이 단일 소스로 <br> PC / TABLET / MOBILE 등 각종 디바이스의 화면 사이즈에<br> 최적화 되어 레이아웃이 변경되는 UI 개발로 <br> OFFICIAL SITE 제작에 최적화</p>
+                                    <p class="pre">적용된 프로젝트 보기</p>
+                                    <ul class="nav tags">
+                                        <li class="nav-item tag "><span>SAMSUNG SSD</span></li>
+                                        <li class="nav-item tag"><a href="https://developers.sktelecom.com/" target="_showcase" class="nav-link glow-on-hover">SK OPEN API</a></li>
+                                        <li class="nav-item tag"><a href="http://www.oakley.co.kr/" target="_showcase" class="nav-link glow-on-hover">OAKLEY KOREA</a></li>
+                                        <li class="nav-item tag"><a href="http://designm4.com/" target="_showcase" class="nav-link glow-on-hover">DESIGN M4</a></li>
+                                    </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="item-case scroll-slide">
+                            <div class="item-container">
+                                <div class="item-image glow-on-hover video-preview">
+                                    <video loop="true" poster="../img/air.png" muted="" width="720" height="450"  preload="none">
+                                        <source type="video/mp4" src="../img/air.mp4">
+                                    </video>
+                                </div>
+                                <div class="item-body">
+                                    <div class="block">
+                                    <h2 class="item-title">E-BOOK / CATALOG<br> UI DEV</h2>
+                                    <p class="item-info">CSS3 및 GSAP TWEENMAX 등을 사용하여<br> 책을 보는 느낌으로 컨텐츠를 구성하여 사용자의 경험을 극대 화 하고 일반 웹사이트와 구분되는 사이트 레이아웃 개발<br>E-BOOK / BROCHURE / CATALOG 개발에 최적화</p>
+                                    <p class="pre">적용된 프로젝트 보기</p>
+                                    <ul class="nav tags">
+                                        <li class="nav-item tag"><a href="https://japan.koreanair.com/" target="_showcase" class="nav-link glow-on-hover">대한항공</a></li>
+                                        
+                                    </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="item-case scroll-slide">
+                            <div class="item-container">
+                                <div class="item-image glow-on-hover video-preview">
+                                    <video loop="true" poster="../img/air.png" muted="" width="720" height="450"  preload="none">
+                                        <source type="video/mp4" src="../img/kiosk.mp4">
+                                    </video>
+                                </div>
+                                <div class="item-body">
+                                    <div class="block">
+                                    <h2 class="item-title">KIOSK UI DEV</h2>
+                                    <p class="item-info">일반 PC가 아닌 터치 기반의 키오스크  및 타블렛 내에 적용되는 단일 어플리케이션용 UI 인터렉션 제작으로 싱글페이지 어플리케이션 혹은 일반 HTML 및 JAVASCRIPT로 제작<br>KIOSK / INFORMATION / CATALOG 개발에 최적화</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="item-case scroll-slide">
+                            <div class="item-container">
+                                <div class="item-image glow-on-hover video-preview">
+                                    <video loop="true"  poster="../img/scale1.jpg" muted="" width="720" height="450"  preload="none">
+                                        <source type="video/mp4" src="../img/scale1.mp4">
+                                    </video>
+                                </div>
+                                <div class="item-body">
+                                    <div class="block">
+                                        <h2 class="item-title ">AUTO RESIZING <br> UI DEV.</h2>
+                                        <p class="item-info">
+                                            브라우저 사이즈에 맞게 자동으로 컨텐츠가 같은 비율로 <br> 확대 / 축소 되어 브라우저 스크롤 없이 한 화면에 <br> 모든 컨텐츠를 표현 할 수 있는 방식의 UI 개발로 <br>
+                                            PROMOTION / BRAND / EVENT SITE 제작에 최적화</p>
+                                        <p class="pre">적용된 프로젝트 보기</p>
+                                        <ul class="nav tags">
+                                            <li class="nav-item tag "><a href="#" class="nav-link glow-on-hover">NEPA BROCHURE</a></li>
+                                            <li class="nav-item tag"><a href="http://lgv50s-thinq.co.kr/" target="_showcase" class="nav-link glow-on-hover">LG v50</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="item-case scroll-slide">
+                            <div class="item-container">
+                                <div class="item-image glow-on-hover video-preview">
+                                    <video loop="true"  poster="../img/wemade.png" muted="" width="720" height="450"  preload="none">
+                                        <source type="video/mp4" src="../img/wemade.mp4">
+                                    </video>
+                                </div>
+                                <div class="item-body">
+                                    <div class="block">
+                                    <h2 class="item-title ">ONE PAGE<br>PARALLAX UI DEV.</h2>
+                                    <p class="item-info">단일 페이지로 스크롤에 맞추어 컨텐츠의 위치를 변경토록 <br> 하여 보다 생동감 있는 페이지 제작하는 방식으로 <br>OFFICIAL / PROMOTION / BRAND / EVENT SITE <br> 제작에 최적화</p>
+                                    <p class="pre">적용된 프로젝트 보기</p>
+                                    <ul class="nav tags">
+                                        <li class="nav-item tag "><a href="http://naddic.com/" target="_showcase" class="nav-link glow-on-hover">WEMADE TREE</a></li>
+                                        <li class="nav-item tag"><a href="http://naddic.com/" target="_showcase" class="nav-link glow-on-hover">NADDIC</a></li>
+                                    </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        
+
+
+                        <article class="item-case scroll-slide end-case">
+                                <div class="item-container">
+                                    <div class="item-image glow-on-hover">
+                                        <div class="over-text">
+                                            <p><span>Our</span> <strong>showcase</strong> <span>is over.</span></p>
+                                            <p><span>If you</span> <strong>like this</strong></p>
+                                            <p><strong>please</strong> <span>contact us.</span></p>
+                                            <div class="bongocat">
+                                                <img src="../img/cat.svg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="slideshow__progress-ctn"><span class="slideshow__progress"></span></div>
+            <p class="info-scroll left-side"><span>위로 한번더 올려 주세요</span></p>
+            <p class="info-scroll right-side"><span>아래로 한번더 내려 주세요</span></p>
+            <div class="geometry">
+                <span class="suare pos1">
+                    <svg viewBox="-1 -1 102 102" class="shape">
+                      <rect width="100" height="100" stroke="black" stroke-width="2" fill="none" />
+                    </svg>
+                </span>
+                <span class="triange pos2">
+                    <svg  viewBox="0 0 150 130" class="shape">
+                         <polygon points="75,0 150,130 0,130" stroke="black" stroke-width="2" fill="none"/>
+                    </svg>
+                </span>
+                <span class="triange pos3">
+                    <svg  viewBox="0 0 150 130" class="shape">
+                         <polygon points="75,0 150,130 0,130" stroke="black" stroke-width="2" fill="none"/>
+                    </svg>
+                </span>
+                <span class="circle pos4">
+                    <svg viewBox="0 0 102 102">
+                      <circle cx="50" cy="50" r="49" stroke="black" stroke-width="2" fill="none" />
+                    </svg> 
+                </span>
+                <span class="suare pos5">
+                    <svg viewBox="-1 -1 102 102" class="shape">
+                      <rect width="100" height="100" stroke="black" stroke-width="2" fill="none" />
+                    </svg>
+                </span>
+                <span class="circle pos6">
+                    <svg viewBox="0 0 102 102">
+                      <circle cx="50" cy="50" r="49" stroke="black" stroke-width="2" fill="none" />
+                    </svg> 
+                </span>
+                <span class="suare pos7">
+                    <svg viewBox="-1 -1 102 102" class="shape">
+                      <rect width="100" height="100" stroke="black" stroke-width="2" fill="none" />
+                    </svg>
+                </span>
+                <span class="suare pos8">
+                    <svg viewBox="-1 -1 102 102" class="shape">
+                      <rect width="100" height="100" stroke="black" stroke-width="2" fill="none" />
+                    </svg>
+                </span>
+                <span class="suare pos9">
+                    <svg viewBox="-1 -1 102 102" class="shape">
+                      <rect width="100" height="100" stroke="black" stroke-width="2" fill="none" />
+                    </svg>
+                </span>
+                <span class="suare pos10">
+                    <svg viewBox="-1 -1 102 102" class="shape">
+                      <rect width="100" height="100" stroke="black" stroke-width="2" fill="none" />
+                    </svg>
+                </span>
+            </div>
+        </div>
+        <div id="section6" class="section flex-center" data-ui="wheel-section" data-down-time=1500 data-up-time=0>
+            <div class="contactLeft">
+                <h1><span>in</span>CODING</h1>
+                <p>INTERACTIVE STUDIO</p>
+<!--                <p class="cate">웹퍼블리싱 / UI 개발 / FRONT-END 개발</p>-->
+            </div>
+            <div class="contactRight">
+                <h2 class="mB20">Contact us</h2>
+                <p style="font-weight: 700;">언제나 최적의 솔루션을 제공하고, 신뢰 할 수 있는 파트너가 되도록 노력 하겠습니다.</p>
+<!--                <p style="text-transform: uppercase; font-weight: 700;">our works would be your possibility</p>-->
+                <p class="mT20">+82 02 8584 2855</p>
+                <p>+10 8584 2855</p>
+                <p class="mT20"><span id="mail">support@incoding.co.kr</span><button type="button" class="btnMail" data-clipboard-target="#mail"><i class="far fa-clone"></i></button></p>
+                <p><span id="mail1">master@designnest.net</span><button type="button" class="btnMail" data-clipboard-target="#mail1"><i class="far fa-clone"></i></button></p>
+                <p class="address">서울시특별시 광진구 능동로 36길 109 3층</p>
+<!--                <p class="map">Find us on the map</p>-->
+<!--
+                <div class="bongocat">
+                    <img src="../img/cat.svg" alt="">
+                </div>
+-->
+            </div>
+
+        </div>
+
+    </div>
+    <!-- //wrap -->
+
+<!-- customcursor -->
+    <div class="cursor"><div class="cursor-follower"></div><div class="cursor-pointer"></div></div>
+<!-- loading -->
+     <div id="loading" class="flex-center">
+        <span class="img-mask lt"></span>
+        <span class="img-mask rt"></span>
+        <span class="img-mask lb"></span>
+        <span class="img-mask rb"></span>
+        <ul class="quote-mask"></ul>
+     </div>
+     <p class="copyright">By Incoding 2020</p>
+     <!-- ie -->
+     <div id="ie">
+         <div class="ieCon">
+             <p class="img"><img src="../img/img_ie.jpg" alt=""></p>
+             <p class="text">본 사이트는 익스플로러가 지원하지 않는 기능이 많이 포함되어<br><b>엣지 및 익스플로러에서는 제대로 보이지 않습니다.</b> <br> 크롬 / 사파리 / 파이어 폭스와 같은 <br> 모던 브라우저로 접속 해주시면 감사하겠습니다.</p>
+             <p><a href="index_ie.html" class="view-ie">이미지로 보기 </a></p>
+             <p class="ie_contact">
+                 <b>CONTACT US</b>
+                 010.8584.2855 <br>
+                 support@incoding.co.kr
+             </p>
+         </div>
+     </div>
+ </body>
+
+
+</html>
