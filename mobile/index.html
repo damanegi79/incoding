@@ -38,6 +38,8 @@
     <script src="../js/TextPlugin.min.js"></script>
     <script src='../js/swiper.min.js'></script>
     <script src="../js/jquery.teletype.js"></script>
+    <script src="../js/jquery.inview.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
     <script src="../js/ui_m.js"></script>
 
 </head>
@@ -45,7 +47,6 @@
 <body>
     <!-- wrap -->
     <div id="fixedContents">
-        
         <dl class="colorSelector">
             <dt><button type="button">컬러선택</button></dt>
             <dd>
@@ -76,7 +77,7 @@
             </div>
         </div>
     </div>
-    <div id="wrap" >
+    <div id="wrap" class="scroll_lock">
         <div class="intro flex-center">
             <h1>
                 <svg id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 345.171 73.265">
@@ -98,7 +99,7 @@
                 <div class="headWrap">
                     <div class="header">
                         <h1 class="clearfix"><a href="#"><span class="left">IN</span><span class="right">CODING</span></a></h1>
-                        <span class="summery">Interective Studio 1</span>
+                        <span class="summery">Interective Studio</span>
                     </div>
                 </div>
                 <div class="logoLines">

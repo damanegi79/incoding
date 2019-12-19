@@ -73,13 +73,18 @@ html, body{
     width:100%;
     height:100%;
     overflow: hidden;
-    font-family:'Roboto','NanumSquareRound', sans-serif; font-weight: 400; font-size: 14px; color: #333;
-}
+    font-family:'Roboto','NanumSquareRound', sans-serif; font-weight: 400; font-size: 14px; color: #333; -webkit-overflow-scrolling: touch;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: contain;
+    scroll-behavior: smooth;
 
+}
 #wrap{
     position: relative;
-    width:100%; overflow-x: hidden; overflow-y: auto; height: 100vh;  scroll-behavior: smooth;
+    width:100%; height: auto; scroll-behavior: smooth;  -webkit-overflow-scrolling: touch;scroll-behavior: smooth;
+    overflow-x: hidden; overflow-y: hidden;
 }
+#wrap.scroll_use{overflow-y:scroll;}
 
 .section{position:relative; width: 100vw; min-height: 100vh; overflow:hidden; border: 1px solid #f00;}
 #wrap #section2{background-color:var(--color-1);}
@@ -143,6 +148,7 @@ html, body{
 
 .menuButton.openedState {
     background-size: auto 23px;
+
 }
 
 .menuButton .menu-line {
@@ -191,9 +197,9 @@ html, body{
     transform: scaleY(4.5) scaleX(1);
 }
 .initScreen{height: 125vh; position: relative;  pointer-events: none; width: 100%;}
-.logoBlock{position: fixed; left: 0; top: 0; width: 100%; height: 100%; border: 1px solid #f00; z-index: 100;}
+.logoBlock{position: relative; left: 0; top: 0; width: 100%; height: 100%; border: 1px solid #f00; z-index: 100;}
 .logoBlock .headWrap{position: absolute; width: 100%; height:100%; left: 0; top: 0;}
-.logoBlock .header{position: fixed; z-index: 10; text-align: center; pointer-events: none; text-align: center; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);}
+.logoBlock .header{position: fixed; z-index: 10; text-align: center; pointer-events: none; text-align: center; top: 50%; left: 50%;}
 .logoBlock .header h1 {
     font-family: 'Trench Thin';
     font-size: 30px;
@@ -212,10 +218,10 @@ html, body{
 .logoBlock .logoLines {position: fixed; pointer-events: none; left: 0; right: 0; top: 0; bottom: 0; z-index:20;}
 .logoBlock .logoLines .lineBlock{position: absolute; top: 50%;}
 .logoBlock .logoLines .line{width: 2px; background: linear-gradient(to bottom, var(--color-1), var(--color-1_sub)); position: fixed; opacity: 0; z-index: 10; left:50vw;}
-.logoBlock .logoLines .line.line-center{opacity: 1; transform: translateX(-33px) translateY(-50%);}
-.logoBlock .logoLines .line.line-left{height: 26px;  opacity: 0; transform: translateY(-50%)}
+.logoBlock .logoLines .line.line-center{opacity: 1; transform: translateX(-33px); height: 0;}
+.logoBlock .logoLines .line.line-left{height: 26px;  opacity:0; left:calc(50vw - 33px);}
 .logoBlock .logoLines .line.line-left:after{content: ""; display: block; position: absolute; background-color: #fff; width: 300px; height: 200%; right: 100%; top: -50%;}
-.logoBlock .logoLines .line.line-right{height: 50px; opacity: 0;  transform: translateY(-50%)}
+.logoBlock .logoLines .line.line-right{height: 50px; opacity:0;   left:calc(50vw - 33px);}
 .logoBlock .logoLines .line.line-right:after{content: ""; display: block; position: absolute; background-color: #fff; width: 300px; height: 100%; left: 100%;}
 .logoBlock .logoLines .line.hideAfter:after{display: none;}
 

@@ -541,7 +541,7 @@ $(function () {
             ease: "power4.out",
             y: '-50%',
         })
-        .to($(".logoBlock .logoLines .line-center"), 0.6, {
+        .to($(".logoBlock .logoLines .line-center"), 1, {
             height:'120px',
             y: '-50%',
             ease: "power4.out",
@@ -551,7 +551,7 @@ $(function () {
             opacity: '1',
             y: '-50%',
         }, "line")
-        .to($(".logoBlock .logoLines .line-left"), 0.5, {
+        .to($(".logoBlock .logoLines .line-left"), 1, {
             x: '-115',
             opacity: '1',
             ease: "power4.out",
@@ -561,7 +561,7 @@ $(function () {
             opacity: '1',
             y: '-50%',
         }, "line")
-        .to($(".logoBlock .logoLines .line-right"), 0.5, {
+        .to($(".logoBlock .logoLines .line-right"), 1, {
             x: '195',
             opacity: '1',
             ease: "power4.out",

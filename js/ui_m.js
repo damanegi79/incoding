@@ -8,7 +8,7 @@ $(function () {
     });
     var logoTween = gsap.timeline({
         onStart: tweenStart,
-        paused: true,
+//        paused: true,
         onComplete: logoComplete,
         onReverseComplete: reverseComplete,
     });
@@ -23,6 +23,7 @@ $(function () {
 
     function logoComplete() {
         $('.scrollDown .loader').addClass(' show-arrow')
+        $('#wrap').addClass('scroll_use')
     }
 
     function tweenComplete() {
@@ -66,32 +67,39 @@ $(function () {
 
     //function tweenPage01(tween){
     logoTween
-        .to($(".logoBlock .logoLines .line-center"), 1, {height: '120px',ease: "power4.out",})
+        .to($(".logoBlock .logoLines .line-center"), 1, {y:'-60px',})
+        .to($(".logoBlock .logoLines .line-center"), 1, {height: '120px',ease: "power2.inOut"})
         .to($(".logoBlock .logoLines .line-left"), 0, {
+            y:'-13px',
             opacity: '1',
         }, "line")
         .to($(".logoBlock .logoLines .line-right"), 0, {
+            y:'-25px',
             opacity: '1',
         }, "line")
-        .to($(".logoBlock .logoLines .line-left"), 0.5, {
-            x: '-125px',
+        .to($(".logoBlock .logoLines .line-left"), 1.5, {
+            x: '-108px',
             opacity: '1',
             ease: "power4.out",
         }, "side-line")
         
-        .to($(".logoBlock .logoLines .line-right"), 0.5, {
-            x: '120px',
+        .to($(".logoBlock .logoLines .line-right"), 1.5, {
+            x: '165px',
             opacity: '1',
             ease: "power4.out",
         }, "side-line")
+        .to($(".logoBlock .header"), 0, {
+            x:"-50%",
+            y:"-50%",
+        })
         .to($(".logoBlock h1 span"), 0, {
             opacity: '1',
         })
-        .to($(".logoBlock h1 span.left"), 0.5, {
+        .to($(".logoBlock h1 span.left"), 1, {
             x: '0',
             ease: "power4.out",
         }, "title")
-        .to($(".logoBlock h1 span.right"), 0.5, {
+        .to($(".logoBlock h1 span.right"), 1, {
             x: '0',
             ease: "power4.out",
         }, "title")
@@ -104,10 +112,10 @@ $(function () {
         })
 
 
-
     $(function () {
 //        video.pause();
-        logoTween.play();
+        masterTween.add(logoTween).timeScale(5)
+//        logoTween.play();
     })
 
 
@@ -211,12 +219,6 @@ $(function () {
     }
 
 
-    /* 네비 이동 */
-    $('a.home').on('click', function () {
-        $(".indicator nav .navItem:eq(0) button").click();
-    })
-
-
     /* 컬러셀렉터 */
     $(function () {
         var myColor = new Array();
@@ -287,10 +289,6 @@ $(function () {
         })
     })
 
-
-
-
-
     $(function () {
         var figure = $(".video-preview").hover(hoverVideo, hideVideo);
 
@@ -326,4 +324,67 @@ $(function () {
             }, 1000)
         }
     }
+})
+
+$(function () {
+    var controller = new ScrollMagic.Controller();
+    var tl = new TimelineMax();
+    var initScreen = $('.initScreen').height()/2
+    tl.to($(".header"), 5, {
+        force3D: true,
+        top:'0vh',
+        scale:'0.4',
+        x:'-43%',
+    },'logo')
+    .to($(".logoBlock .logoLines .lineBlock"), 5, {
+        top:'0',
+    },'logo')
+     .to($(".logoBlock .logoLines .lineBlock .line-center"), 5, {
+        x:'0',
+        y:'0%',
+        height:'100vh',
+    },'logo')
+    .to($(".logoBlock .logoLines .lineBlock .line-left"), 5, {
+//        x:'0',
+//        y:'0%',
+//        width:'1px',
+        left:'-1vw',
+//        height:'100vh',
+    },'logo')
+    .to($(".logoBlock .logoLines .lineBlock .line-right"), 5, {
+//        x:'-1px',
+//        y:'0%',
+//        width:'1px',
+        left:'101vw',
+//        height:'100vh',
+    },'logo')
+    .to($(".header"), 5, {
+        force3D: true,
+        y:'0%',
+    })
+    var scene = new ScrollMagic.Scene({
+      triggerElement: ".initScreen",
+      triggerHook: 0,
+      offset:0,
+      duration: initScreen,
+    })
+    .addIndicators()
+    .setTween(tl)
+    .addTo(controller);
+
+    $('.initScreen').on('inview', function(event, isInView) {
+      if (isInView) {
+        console.log('initScreen in')
+      } else {
+        console.log('initScreen out')
+      }
+    });
+
+    $('#section2').on('inview', function(event, isInView) {
+      if (isInView) {
+        console.log('section2 start')
+      } else {
+        console.log('section2 out')
+      }
+    });
 })
